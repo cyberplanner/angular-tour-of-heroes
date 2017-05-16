@@ -29,7 +29,7 @@ const HEROES: Hero[] = [
       // *ngFor iterates over the heroes array and assign an element to 'hero' each time
       // (click)event listener of the type OnClick that trigers a function
       // onSelect(hero) function takes the hero assigned by *ngFor.. it lives in AppComponent class
-      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero" >
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero" > //The css class 'selected' will be attached if hero is === to selectedHero
       <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
