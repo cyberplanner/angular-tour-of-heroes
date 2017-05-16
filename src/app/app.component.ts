@@ -9,7 +9,13 @@ export class Hero {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  template: `<h1>{{title}}</h1><h2>{{hero.name}} details!</h2>`
+  template: `
+  <h1>{{title}}</h1>
+  <h2>{{hero.name}} details!</h2>
+  <div><label>ID: </label>{{hero.id}}</div>
+  <div><label>Name: </label>{{hero.name}}</div>
+  <input [(ngModel)] = "hero.name" placeholder="Name"/>
+  `
 })
 
 export class AppComponent {
