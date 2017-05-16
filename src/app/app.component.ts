@@ -25,8 +25,11 @@ const HEROES: Hero[] = [
   template: `
     <h1>{{title}}</h1>
     <h2>Heroes:</h2>
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+    <ul class="heroes"> // From AppComponent.heroes  = HEROES;
+      // *ngFor iterates over the heroes array and assign an element to 'hero' each time
+      // (click)event listener of the type OnClick that trigers a function
+      // onSelect(hero) function takes the hero assigned by *ngFor.. it lives in AppComponent class
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero" >
       <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
@@ -96,12 +99,11 @@ export class AppComponent {
   // Class initialised with:
   title   = 'Tour of Heroes';
   heroes  = HEROES;
-  selectedHero: Hero;
+  selectedHero: Hero; //Hero is a placeholder I think!
 
-  // Class methods
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
+  // Class method
+  onSelect(hero: Hero): void { // the function takes the hero assigned by *ngFor and
+    this.selectedHero = hero; // assign it as this.class's selectedHero
   }
-
 
 }
