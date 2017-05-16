@@ -18,6 +18,11 @@ const HEROES: Hero[] = [
   { id: 20, name: 'Tornado' }
 ];
 
+  // From AppComponent.heroes  = HEROES;
+  // *ngFor iterates over the heroes array and assign an element to 'hero' each time
+  // (click)event listener of the type OnClick that trigers a function
+  // onSelect(hero) function takes the hero assigned by *ngFor.. it lives in AppComponent class
+  // The css class 'selected' will be attached if hero is === to selectedHero
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,11 +30,8 @@ const HEROES: Hero[] = [
   template: `
     <h1>{{title}}</h1>
     <h2>Heroes:</h2>
-    <ul class="heroes"> // From AppComponent.heroes  = HEROES;
-      // *ngFor iterates over the heroes array and assign an element to 'hero' each time
-      // (click)event listener of the type OnClick that trigers a function
-      // onSelect(hero) function takes the hero assigned by *ngFor.. it lives in AppComponent class
-      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero" > //The css class 'selected' will be attached if hero is === to selectedHero
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero" >
       <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
