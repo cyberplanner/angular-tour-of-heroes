@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-export class Hero {
-  id: number;
-  name: string;
-}
+import { Hero } from './hero';
 
 const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice' },
@@ -18,11 +14,11 @@ const HEROES: Hero[] = [
   { id: 20, name: 'Tornado' }
 ];
 
-  // From AppComponent.heroes  = HEROES;
-  // *ngFor iterates over the heroes array and assign an element to 'hero' each time
-  // (click)event listener of the type OnClick that trigers a function
-  // onSelect(hero) function takes the hero assigned by *ngFor.. it lives in AppComponent class
-  // The css class 'selected' will be attached if hero is === to selectedHero
+  // line: 33 From AppComponent.heroes  = HEROES;
+  // line: 34 *ngFor iterates over the heroes array and assign an element to 'hero' each time
+    // (click)event listener of the type OnClick that trigers a function
+    // onSelect(hero) function takes the hero assigned by *ngFor.. it lives in AppComponent class
+    // The css class 'selected' will be attached if hero is === to selectedHero
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,14 +32,8 @@ const HEROES: Hero[] = [
       </li>
     </ul>
     <hr/>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-      <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name">
-      </div>
-    </div>
+
+    <hero-detail [hero]="selectedHero"></hero-detail>
     `,
   styles: [`
     .selected {
@@ -99,9 +89,9 @@ const HEROES: Hero[] = [
 
 export class AppComponent {
   // Class initialised with:
-  title   = 'Tour of Heroes';
-  heroes  = HEROES;
-  selectedHero: Hero; //Hero is a placeholder I think!
+  title   = 'Tour of Heroes'; // Generic string title property
+  heroes  = HEROES; // heroes property is equal to HEROES array/constant
+  selectedHero: Hero; //Hero is a placeholder, I think!
 
   // Class method
   onSelect(hero: Hero): void { // the function takes the hero assigned by *ngFor and
