@@ -1,18 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
-
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
+import { HeroService } from "./hero.service"
 
   // line: 33 From AppComponent.heroes  = HEROES;
   // line: 34 *ngFor iterates over the heroes array and assign an element to 'hero' each time
@@ -87,10 +75,19 @@ const HEROES: Hero[] = [
 
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  // A constructor that does nothing but injects the service HeroService
+  constructor(private heroService: HeroService) {
+
+  }
+
+  ngOnInit(): void {
+    this.getHeroes()
+  }
   // Class initialised with:
   title   = 'Tour of Heroes'; // Generic string title property
-  heroes  = HEROES; // heroes property is equal to HEROES array/constant
+  heroes: Hero[];
+  // heroes  = HEROES; // heroes property is equal to HEROES array/constant
   selectedHero: Hero; //Hero is a placeholder, I think!
 
   // Class method
@@ -98,4 +95,7 @@ export class AppComponent {
     this.selectedHero = hero; // assign it as this.class's selectedHero
   }
 
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
 }
